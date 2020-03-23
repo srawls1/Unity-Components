@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2df5cc64f51a4458fd5465689b7bed, type: 3}
+  m_Name: GoodbyeNode
+  m_EditorClassIdentifier: 
+  m_line: {fileID: 11400000, guid: fd23d89c523032a4cb14383b030ac73e, type: 2}
+  nextOptions: []
+  result: {fileID: 11400000, guid: a1ee48ac44459e042b0fea7a5f81147c, type: 2}
