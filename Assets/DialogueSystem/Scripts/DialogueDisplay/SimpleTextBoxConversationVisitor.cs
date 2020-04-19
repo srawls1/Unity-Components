@@ -13,10 +13,10 @@ public class SimpleTextBoxConversationVisitor : ConversationVisitor
 
 	public IEnumerator VisitChoice(ChoiceNode node)
 	{
-		ReadOnlyCollection<ResponseOption> options = node.GetPossibleResponses();
+		ReadOnlyCollection<LineNode> options = node.GetPossibleResponses();
 		for (int i = 0; i < options.Count; ++i)
 		{
-			ResponseOption option = options[i];
+			LineNode option = options[i];
 			Button butt = Object.Instantiate(choiceButtonPrefab, choiceRect);
 			Text choiceText = butt.GetComponentInChildren<Text>();
 			choiceText.text = option.text;
@@ -38,9 +38,9 @@ public class SimpleTextBoxConversationVisitor : ConversationVisitor
 
 	public IEnumerator VisitLine(LineNode node)
 	{
-		textBox.text = node.line.character + ": ";
+		textBox.text = node.character + ": ";
 
-		string text = node.line.text;
+		string text = node.text;
 		if (timePerCharacter <= 0f)
 		{
 			textBox.text += text;
@@ -54,8 +54,8 @@ public class SimpleTextBoxConversationVisitor : ConversationVisitor
 		}
 	}
 
-	private ResponseOption choice = null;
-	private void SelectOption(ResponseOption option)
+	private LineNode choice = null;
+	private void SelectOption(LineNode option)
 	{
 		choice = option;
 	}

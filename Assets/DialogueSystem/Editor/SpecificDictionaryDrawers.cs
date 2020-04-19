@@ -10,13 +10,3 @@ public class SerializableStringDictionaryDrawer : SerializableDictionaryDrawer<s
 		return GetGenericTemplate<SerializableStringStringTemplate>();
 	}
 }
-
-internal class SerializableResponseToNodeTemplate : SerializableKeyValueTemplate<ResponseOption, ConversationNode> { }
-
-[CustomPropertyDrawer(typeof(ResponseToNodeDictionary))]
-public class ResponseToNodeDictionaryDrawer : SerializableDictionaryDrawer<ResponseOption, ConversationNode> {
-	protected override SerializableKeyValueTemplate<ResponseOption, ConversationNode> GetTemplate()
-	{
-		return GetGenericTemplate<SerializableResponseToNodeTemplate>();
-	}
-}

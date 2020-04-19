@@ -1,0 +1,287 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8925552175601809297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888b7910b33c3cb48a48d9ea93745696, type: 3}
+  m_Name: HiByeChoice
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -152, y: -24}
+  ports:
+    keys:
+    - next
+    - previous
+    values:
+    - _fieldName: next
+      _node: {fileID: -8925552175601809297}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: previous
+        node: {fileID: -400990354757422741}
+        reroutePoints: []
+      - fieldName: previous
+        node: {fileID: 3846100983233733404}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: previous
+      _node: {fileID: -8925552175601809297}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: next
+        node: {fileID: -1903304585160652005}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  m_attributes:
+    keys: []
+    values: []
+  previous: 0
+  next: 0
+--- !u!114 &-1903304585160652005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2df5cc64f51a4458fd5465689b7bed, type: 3}
+  m_Name: Hello1
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -424, y: -120}
+  ports:
+    keys:
+    - next
+    - previous
+    values:
+    - _fieldName: next
+      _node: {fileID: -1903304585160652005}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: previous
+        node: {fileID: -8925552175601809297}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: previous
+      _node: {fileID: -1903304585160652005}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: next
+        node: {fileID: -400990354757422741}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  m_attributes:
+    keys: []
+    values: []
+  m_text: Hello!
+  m_character: Dude 1
+  m_audio: {fileID: 0}
+  m_animation: {fileID: 0}
+  requirement: {fileID: 11400000, guid: 6deb867b58e3089428128d6df5e21f79, type: 2}
+  result: {fileID: 11400000, guid: 8f0b84727dfcab14db98549d108650ce, type: 2}
+  previous: 0
+  next: 0
+--- !u!114 &-400990354757422741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2df5cc64f51a4458fd5465689b7bed, type: 3}
+  m_Name: Line
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 120, y: -296}
+  ports:
+    keys:
+    - next
+    - previous
+    values:
+    - _fieldName: next
+      _node: {fileID: -400990354757422741}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: previous
+        node: {fileID: -1903304585160652005}
+        reroutePoints:
+        - {x: 364.40857, y: -313.76834}
+        - {x: -506.17004, y: -310.28137}
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: previous
+      _node: {fileID: -400990354757422741}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: next
+        node: {fileID: -8925552175601809297}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  m_attributes:
+    keys: []
+    values: []
+  m_text: Hi there!
+  m_character: Dude 2
+  m_audio: {fileID: 0}
+  m_animation: {fileID: 0}
+  requirement: {fileID: 11400000, guid: 6deb867b58e3089428128d6df5e21f79, type: 2}
+  result: {fileID: 11400000, guid: 8f0b84727dfcab14db98549d108650ce, type: 2}
+  previous: 0
+  next: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b176485b1c1c5b4c83587d7b3f441f5, type: 3}
+  m_Name: TestConversation
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -1903304585160652005}
+  - {fileID: -8925552175601809297}
+  - {fileID: -400990354757422741}
+  - {fileID: 3846100983233733404}
+  - {fileID: 8373970526138969909}
+  m_first: {fileID: -1903304585160652005}
+--- !u!114 &3846100983233733404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2df5cc64f51a4458fd5465689b7bed, type: 3}
+  m_Name: Line
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 120, y: 8}
+  ports:
+    keys:
+    - next
+    - previous
+    values:
+    - _fieldName: next
+      _node: {fileID: 3846100983233733404}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: previous
+        node: {fileID: 8373970526138969909}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: previous
+      _node: {fileID: 3846100983233733404}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: next
+        node: {fileID: -8925552175601809297}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  m_attributes:
+    keys: []
+    values: []
+  m_text: Goodbye!
+  m_character: Dude 2
+  m_audio: {fileID: 0}
+  m_animation: {fileID: 0}
+  requirement: {fileID: 11400000, guid: 6deb867b58e3089428128d6df5e21f79, type: 2}
+  result: {fileID: 11400000, guid: 8f0b84727dfcab14db98549d108650ce, type: 2}
+  previous: 0
+  next: 0
+--- !u!114 &8373970526138969909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2df5cc64f51a4458fd5465689b7bed, type: 3}
+  m_Name: Line
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 392, y: 8}
+  ports:
+    keys:
+    - next
+    - previous
+    values:
+    - _fieldName: next
+      _node: {fileID: 8373970526138969909}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: previous
+      _node: {fileID: 8373970526138969909}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: next
+        node: {fileID: 3846100983233733404}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  m_attributes:
+    keys: []
+    values: []
+  m_text: Bye then!
+  m_character: Dude 1
+  m_audio: {fileID: 0}
+  m_animation: {fileID: 0}
+  requirement: {fileID: 11400000, guid: 6deb867b58e3089428128d6df5e21f79, type: 2}
+  result: {fileID: 11400000, guid: 8f0b84727dfcab14db98549d108650ce, type: 2}
+  previous: 0
+  next: 0

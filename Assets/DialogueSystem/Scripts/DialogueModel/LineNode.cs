@@ -1,22 +1,31 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using XNode;
 
-[Serializable]
-public struct ConditionalConversationPath
-{
-	public Requirement condition;
-	public ConversationNode next;
-}
-
-[CreateAssetMenu]
 public class LineNode : ConversationNode
 {
-	[SerializeField] private DialogueLine m_line;
-	[SerializeField] private ConditionalConversationPath[] nextOptions;
+	[SerializeField] private string m_text;
+	[SerializeField] private string m_character;
+	[SerializeField] private AudioClip m_audio;
+	[SerializeField] private Animation m_animation;
+	[SerializeField] private Requirement requirement;
 	[SerializeField] private ConversationResult result;
 
-	public DialogueLine line { get { return m_line; } }
+
+	[Input]
+	public int previous;
+	[Output]
+	public int next;
+
+	public string text { get { return m_text; } }
+	public string character { get { return m_character; } }
+	public bool hasAudio { get { return m_audio != null; } }
+	public AudioClip audio { get { return m_audio; } }
+	public bool hasAnimation { get { return m_animation != null; } }
+	public Animation animation { get { return m_animation; } }
+
+	public override bool isRequirementMet => requirement.isMet;
 
 	public override IEnumerator AcceptVisitor(ConversationVisitor visitor)
 	{
@@ -31,13 +40,17 @@ public class LineNode : ConversationNode
 
 	public override ConversationNode GetNext()
 	{
-		foreach (ConditionalConversationPath option in nextOptions)
+		NodePort outPort = GetOutputPort("next");
+		List<NodePort> nextOptions = outPort.GetConnections();
+		for (int i = 0; i < nextOptions.Count; ++i)
 		{
-			if (option.condition.isMet)
+			ConversationNode nextNode = nextOptions[i].node as ConversationNode;
+			if (nextNode.isRequirementMet)
 			{
-				return option.next;
+				return nextNode;
 			}
 		}
+
 		return null;
 	}
 }

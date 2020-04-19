@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class SimpleTextBoxConversationTarget : MonoBehaviour
 {
-	[SerializeField] private ConversationNode firstNode;
+	[SerializeField] private Conversation conversation;
 	[SerializeField] private SimpleTextBoxConversationVisitor textBoxInfo;
 
 	private GenericConversationDriver driver;
 
     void Awake()
     {
-		driver = new GenericConversationDriver(firstNode, textBoxInfo);
+		driver = new GenericConversationDriver(conversation.first, textBoxInfo);
 	}
 
 	//<temp>

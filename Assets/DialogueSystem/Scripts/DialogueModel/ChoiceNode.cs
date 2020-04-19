@@ -1,35 +1,35 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using UnityEngine;
+using XNode;
 
-[Serializable]
-public class ResponseToNodeDictionary
-	: SerializableDictionary<ResponseOption, ConversationNode> { }
-
-[CreateAssetMenu]
 public class ChoiceNode : ConversationNode
 {
-	[SerializeField] private ResponseToNodeDictionary responseOptions;
+	[Input]
+	public int previous;
+	[Output]
+	public int next;
 
-	private List<ResponseOption> possibleResponses = new List<ResponseOption>();
-	public ReadOnlyCollection<ResponseOption> GetPossibleResponses()
+	public override bool isRequirementMet => true;
+
+	public ReadOnlyCollection<LineNode> GetPossibleResponses()
 	{
-		possibleResponses.Clear();
-		foreach (KeyValuePair<ResponseOption, ConversationNode> responseOption in responseOptions)
+		List<LineNode> elligibleResponses = new List<LineNode>();
+		List<NodePort> connections = GetOutputPort("next").GetConnections();
+		for (int i = 0; i < connections.Count; ++i)
 		{
-			if (responseOption.Key.requirement.isMet)
+			LineNode response = connections[i].node as LineNode;
+			if (response.isRequirementMet)
 			{
-				possibleResponses.Add(responseOption.Key);
+				elligibleResponses.Add(response);
 			}
 		}
 
-		return possibleResponses.AsReadOnly();
+		return elligibleResponses.AsReadOnly();
 	}
 
-	private ResponseOption choice;
-	public void SetResponse(ResponseOption choice)
+	private LineNode choice;
+	public void SetResponse(LineNode choice)
 	{
 		this.choice = choice;
 	}
@@ -41,6 +41,6 @@ public class ChoiceNode : ConversationNode
 
 	public override ConversationNode GetNext()
 	{
-		return responseOptions[choice];
+		return choice;
 	}
 }
