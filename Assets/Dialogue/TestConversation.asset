@@ -46,9 +46,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  m_attributes:
-    keys: []
-    values: []
   previous: 0
   next: 0
 --- !u!114 &-1903304585160652005
@@ -94,10 +91,11 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  m_attributes:
-    keys: []
-    values: []
-  m_text: Hello!
+  m_text: 'Hello world!
+
+    Hello again!
+
+    Just testing a third line!'
   m_character: Dude 1
   m_audio: {fileID: 0}
   m_animation: {fileID: 0}
@@ -118,7 +116,7 @@ MonoBehaviour:
   m_Name: Line
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 120, y: -296}
+  position: {x: 120, y: -328}
   ports:
     keys:
     - next
@@ -132,8 +130,8 @@ MonoBehaviour:
       - fieldName: previous
         node: {fileID: -1903304585160652005}
         reroutePoints:
-        - {x: 364.40857, y: -313.76834}
-        - {x: -506.17004, y: -310.28137}
+        - {x: 370.8963, y: -324.6323}
+        - {x: -495.97726, y: -323.1007}
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -150,15 +148,12 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  m_attributes:
-    keys: []
-    values: []
   m_text: Hi there!
   m_character: Dude 2
   m_audio: {fileID: 0}
   m_animation: {fileID: 0}
-  requirement: {fileID: 11400000, guid: 6deb867b58e3089428128d6df5e21f79, type: 2}
-  result: {fileID: 11400000, guid: 8f0b84727dfcab14db98549d108650ce, type: 2}
+  requirement: {fileID: 11400000, guid: ddc5e4f10aa3654439b3308b73062f56, type: 2}
+  result: {fileID: 11400000, guid: 652009b2f5ea2694582bb591609b9c14, type: 2}
   previous: 0
   next: 0
 --- !u!114 &11400000
@@ -223,9 +218,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  m_attributes:
-    keys: []
-    values: []
   m_text: Goodbye!
   m_character: Dude 2
   m_audio: {fileID: 0}
@@ -274,9 +266,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  m_attributes:
-    keys: []
-    values: []
   m_text: Bye then!
   m_character: Dude 1
   m_audio: {fileID: 0}

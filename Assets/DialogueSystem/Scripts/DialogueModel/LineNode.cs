@@ -5,7 +5,7 @@ using XNode;
 
 public class LineNode : ConversationNode
 {
-	[SerializeField] private string m_text;
+	[SerializeField] [TextArea(2, 5)] private string m_text;
 	[SerializeField] private string m_character;
 	[SerializeField] private AudioClip m_audio;
 	[SerializeField] private Animation m_animation;
