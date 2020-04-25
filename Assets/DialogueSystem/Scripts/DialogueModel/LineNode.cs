@@ -12,12 +12,6 @@ public class LineNode : ConversationNode
 	[SerializeField] private Requirement requirement;
 	[SerializeField] private ConversationResult result;
 
-
-	[Input]
-	public int previous;
-	[Output]
-	public int next;
-
 	public string text { get { return m_text; } }
 	public string character { get { return m_character; } }
 	public bool hasAudio { get { return m_audio != null; } }

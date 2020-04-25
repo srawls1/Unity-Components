@@ -5,11 +5,6 @@ using XNode;
 
 public class ChoiceNode : ConversationNode
 {
-	[Input]
-	public int previous;
-	[Output]
-	public int next;
-
 	public override bool isRequirementMet => true;
 
 	public ReadOnlyCollection<LineNode> GetPossibleResponses()
