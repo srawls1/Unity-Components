@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputProxy : MonoBehaviour
+public class InputEventSource : MonoBehaviour
 {
+	private PlayerInputProxy input;
+
 	private Dictionary<string, PriorityQueue<ButtonListener>> registeredPressListeners;
 	private Dictionary<string, PriorityQueue<ButtonListener>> registeredHoldListeners;
 	private Dictionary<string, PriorityQueue<ButtonListener>> registeredReleaseListeners;
@@ -11,6 +13,7 @@ public class PlayerInputProxy : MonoBehaviour
 
 	protected void Awake()
 	{
+		input = GetComponent<PlayerInputProxy>();
 		registeredPressListeners = new Dictionary<string, PriorityQueue<ButtonListener>>();
 		registeredHoldListeners = new Dictionary<string, PriorityQueue<ButtonListener>>();
 		registeredReleaseListeners = new Dictionary<string, PriorityQueue<ButtonListener>>();
@@ -19,9 +22,9 @@ public class PlayerInputProxy : MonoBehaviour
 
 	protected void Update()
 	{
-		IterateButtonListenerList(registeredPressListeners, GetButtonDown);
-		IterateButtonListenerList(registeredHoldListeners, GetButton);
-		IterateButtonListenerList(registeredReleaseListeners, GetButtonUp);
+		IterateButtonListenerList(registeredPressListeners, input.GetButtonDown);
+		IterateButtonListenerList(registeredHoldListeners, input.GetButton);
+		IterateButtonListenerList(registeredReleaseListeners, input.GetButtonUp);
 		IterateAxisListenerList(registeredAxisListeners);
 	}
 
@@ -73,26 +76,6 @@ public class PlayerInputProxy : MonoBehaviour
 		RemoveListenerFromQueue<AxisListener, AxisCallback>(registeredAxisListeners, listener);
 	}
 
-	public virtual float GetAxis(string axisName)
-	{
-		return Input.GetAxis(axisName);
-	}
-
-	public virtual bool GetButton(string buttonName)
-	{
-		return Input.GetButton(buttonName);
-	}
-
-	public virtual bool GetButtonDown(string buttonName)
-	{
-		return Input.GetButtonDown(buttonName);
-	}
-
-	public virtual bool GetButtonUp(string buttonName)
-	{
-		return Input.GetButtonUp(buttonName);
-	}
-
 	private void IterateButtonListenerList(Dictionary<string, PriorityQueue<ButtonListener>> listeners,
 		Func<string, bool> condition)
 	{
@@ -115,7 +98,7 @@ public class PlayerInputProxy : MonoBehaviour
 	{
 		foreach (KeyValuePair<string, PriorityQueue<AxisListener>> mapping in listeners)
 		{
-			float value = GetAxis(mapping.Key);
+			float value = input.GetAxis(mapping.Key);
 			foreach (AxisListener listener in mapping.Value)
 			{
 				if (listener.callback(value))
