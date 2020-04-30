@@ -3,21 +3,11 @@ using UnityEngine;
 
 public abstract class PlayerInputProxy : MonoBehaviour
 {
-	public enum ControllerType
-	{
-		KeyboardAndMouse,
-		XBox,
-		PS3,
-		PS4,
-		SwitchPro,
-		PairedJoyCon,
-		SingleJoyCon
-	}
-
+	[SerializeField] private PlayerInputManager inputManager;
 	[SerializeField] private float axisThreshold;
 
-	protected ButtonMapping[] possibleButtons;
-	protected AxisMapping[] possibleAxes;
+	protected List<ButtonMapping> possibleButtons;
+	protected List<AxisMapping> possibleAxes;
 	private Dictionary<string, ButtonMapping> mappedActions;
 	private Dictionary<string, AxisMapping> mappedAxisActions;
 
@@ -43,7 +33,7 @@ public abstract class PlayerInputProxy : MonoBehaviour
 		pressedButton = null;
 		nonZeroAxis = null;
 
-		for (int i = 0; i < possibleButtons.Length; ++i)
+		for (int i = 0; i < possibleButtons.Count; ++i)
 		{
 			possibleButtons[i].Update();
 			if (possibleButtons[i].isButtonPressed)
@@ -52,7 +42,7 @@ public abstract class PlayerInputProxy : MonoBehaviour
 			}
 		}
 
-		for (int i = 0; i < possibleAxes.Length; ++i)
+		for (int i = 0; i < possibleAxes.Count; ++i)
 		{
 			if (Mathf.Abs(possibleAxes[i].value) > axisThreshold)
 			{
@@ -61,8 +51,42 @@ public abstract class PlayerInputProxy : MonoBehaviour
 		}
 	}
 
-	protected abstract ButtonMapping[] getButtonMappings();
-	protected abstract AxisMapping[] getAxisMappings();
+	protected List<ButtonMapping> getButtonMappings()
+	{
+		List<ButtonMapping> buttons = new List<ButtonMapping>();
+
+		for (int i = 0; i < inputManager.buttonCount; ++i)
+		{
+			if (inputManager.ButtonAt(i).controllerType != controllerType)
+			{
+				continue;
+			}
+
+			buttons.Add(convertButtonInfoToMapping(inputManager.ButtonAt(i)));
+		}
+
+		return buttons;
+	}
+
+	protected List<AxisMapping> getAxisMappings()
+	{
+		List<AxisMapping> axes = new List<AxisMapping>();
+
+		for (int i = 0; i < inputManager.axisCount; ++i)
+		{
+			if (inputManager.AxisAt(i).controllerType != controllerType)
+			{
+				continue;
+			}
+
+			axes.Add(convertAxisInfoToMapping(inputManager.AxisAt(i)));
+		}
+
+		return axes;
+	}
+
+	protected abstract ButtonMapping convertButtonInfoToMapping(ButtonInfo info);
+	protected abstract AxisMapping convertAxisInfoToMapping(AxisInfo info);
 
 	public void MapAction(string actionName, ButtonMapping button)
 	{

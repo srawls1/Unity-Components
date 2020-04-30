@@ -2,9 +2,9 @@
 
 public class SimpleButtonMapping : ButtonMapping
 {
-	private string key;
+	private KeyCode key;
 
-	public SimpleButtonMapping(string key)
+	public SimpleButtonMapping(KeyCode key)
 	{
 		this.key = key;
 	}

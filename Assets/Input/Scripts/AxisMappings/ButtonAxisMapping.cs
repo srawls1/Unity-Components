@@ -2,24 +2,24 @@
 
 public class ButtonAxisMapping : AxisMapping
 {
-	private string positiveButtonName;
-	private string negativeButtonName;
+	private KeyCode positiveButton;
+	private KeyCode negativeButton;
 
-	public ButtonAxisMapping(string positiveButtonName, string negativeButtonName = "")
+	public ButtonAxisMapping(KeyCode positiveButton, KeyCode negativeButton = KeyCode.None)
 	{
-		this.positiveButtonName = positiveButtonName;
-		this.negativeButtonName = negativeButtonName;
+		this.positiveButton = positiveButton;
+		this.negativeButton = negativeButton;
 	}
 
 	public override float value
 	{
 		get
 		{
-			if (Input.GetKey(positiveButtonName))
+			if (Input.GetKey(positiveButton))
 			{
 				return 1f;
 			}
-			if (!string.IsNullOrEmpty(negativeButtonName) && Input.GetKey(negativeButtonName))
+			if (negativeButton != KeyCode.None && Input.GetKey(negativeButton))
 			{
 				return -1f;
 			}
