@@ -19,22 +19,22 @@ public class WindowsXBoxJoystickProxy : PlayerInputProxy
 	{
 		string numSuffix = controllerNumber == 0 ? string.Empty : controllerNumber.ToString();
 		buttonMappings = new Dictionary<JoystickButton, ButtonMapping>();
-		buttonMappings.Add(JoystickButton.SelectFaceButton, new SimpleButtonMapping(KeyCode.Joystick1Button0));
-		buttonMappings.Add(JoystickButton.CancelFaceButton, new SimpleButtonMapping(KeyCode.Joystick1Button1));
-		buttonMappings.Add(JoystickButton.LeftFaceButton, new SimpleButtonMapping(KeyCode.Joystick1Button2));
-		buttonMappings.Add(JoystickButton.TopFaceButton, new SimpleButtonMapping(KeyCode.Joystick1Button3));
+		buttonMappings.Add(JoystickButton.SelectFaceButton, new SimpleButtonMapping(KeyCode.JoystickButton0 + controllerNumber * 20));
+		buttonMappings.Add(JoystickButton.CancelFaceButton, new SimpleButtonMapping(KeyCode.JoystickButton1 + controllerNumber * 20));
+		buttonMappings.Add(JoystickButton.LeftFaceButton, new SimpleButtonMapping(KeyCode.JoystickButton2 + controllerNumber * 20));
+		buttonMappings.Add(JoystickButton.TopFaceButton, new SimpleButtonMapping(KeyCode.JoystickButton3 + controllerNumber * 20));
 		buttonMappings.Add(JoystickButton.DPadDown, new JoystickAxisButtonMapping(-1f, 0f, DPAD_VERTICAL + numSuffix));
 		buttonMappings.Add(JoystickButton.DPadUp, new JoystickAxisButtonMapping(1f, 0f, DPAD_VERTICAL + numSuffix));
 		buttonMappings.Add(JoystickButton.DPadRight, new JoystickAxisButtonMapping(1f, 0f, DPAD_HORIZONTAL + numSuffix));
 		buttonMappings.Add(JoystickButton.DPadLeft, new JoystickAxisButtonMapping(-1f, 0f, DPAD_HORIZONTAL + numSuffix));
-		buttonMappings.Add(JoystickButton.RightShoulder1, new SimpleButtonMapping(KeyCode.Joystick1Button5));
+		buttonMappings.Add(JoystickButton.RightShoulder1, new SimpleButtonMapping(KeyCode.JoystickButton5 + controllerNumber * 20));
 		buttonMappings.Add(JoystickButton.RightShoulder2, new JoystickAxisButtonMapping(1f, 0f, RIGHT_TRIGGER + numSuffix));
-		buttonMappings.Add(JoystickButton.LeftShoulder1, new SimpleButtonMapping(KeyCode.Joystick1Button4));
+		buttonMappings.Add(JoystickButton.LeftShoulder1, new SimpleButtonMapping(KeyCode.JoystickButton4 + controllerNumber * 20));
 		buttonMappings.Add(JoystickButton.LeftShoulder2, new JoystickAxisButtonMapping(1f, 0f, LEFT_TRIGGER + numSuffix));
-		buttonMappings.Add(JoystickButton.LeftStickPress, new SimpleButtonMapping(KeyCode.Joystick1Button8));
-		buttonMappings.Add(JoystickButton.RightStickPress, new SimpleButtonMapping(KeyCode.Joystick1Button9));
-		buttonMappings.Add(JoystickButton.Start, new SimpleButtonMapping(KeyCode.Joystick1Button7));
-		buttonMappings.Add(JoystickButton.Select, new SimpleButtonMapping(KeyCode.Joystick1Button6));
+		buttonMappings.Add(JoystickButton.LeftStickPress, new SimpleButtonMapping(KeyCode.JoystickButton8 + controllerNumber * 20));
+		buttonMappings.Add(JoystickButton.RightStickPress, new SimpleButtonMapping(KeyCode.JoystickButton9 + controllerNumber * 20));
+		buttonMappings.Add(JoystickButton.Start, new SimpleButtonMapping(KeyCode.JoystickButton7 + controllerNumber * 20));
+		buttonMappings.Add(JoystickButton.Select, new SimpleButtonMapping(KeyCode.JoystickButton6 + controllerNumber * 20));
 
 		axisMappings = new Dictionary<JoystickAxis, AxisMapping>();
 		axisMappings.Add(JoystickAxis.LeftStickHorizontal, new SimpleAxisMapping(LEFT_STICK_HORIZONTAL + numSuffix));
